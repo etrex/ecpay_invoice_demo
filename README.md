@@ -1,24 +1,19 @@
-# README
+# 綠界電子發票串接範例
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+code 抓下來後在 bash 下輸入：
 
-Things you may want to cover:
+```bash
+bundle
+rails c
+```
 
-* Ruby version
+進入 rails console 後輸入：
 
-* System dependencies
+```
+params = Ecpay::Invoice::CreateService.new.send(:sample_params)
+relate_number = params["RelateNumber"]
+Ecpay::Invoice::CreateService.new(params).run
+Ecpay::Invoice::FindService.new(relate_number).run
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+即可執行範例程式碼
